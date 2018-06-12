@@ -49,22 +49,26 @@ int get_student_index(int id)
 void read_conflict(char * fname)
 {
 	FILE * fp ;
-	char * b = NULL ;
-	size_t n = 0 ;
+	char b[10];
+	size_t n = 10 ;
 
 
 	fp = fopen(fname, "r") ;  // TODO: handle file errors
 	
-	while (getline(&b, &n, fp) > 0) {
+	if (fp == NULL){
+		fprintf(stderr, "Error occured while opening the File");
+		exit(1);
+	}
+
+	while (fgets(b, n, fp) != NULL) {
 		int n_members ;
 		int m1, m2, m3;
 		int i1, i2, i3 ;
 
 		n_members = sscanf(b, "%d %d %d", &m1, &m2, &m3) ;
-		free(b) ;
 
 		if (n_members <= 1) {
-			fprintf(stderr, "Wrong input") ; //TODO: need a better error message.
+			fprintf(stderr, "There is only one team.") ; //TODO: need a better error message.
 			exit(1) ;
 		}
 
