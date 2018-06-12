@@ -180,12 +180,12 @@ void main(int argc, char ** argv)
 				break ;
 
 			case 'h':
-				printf("Help. I need somebody.\n") ;
+				printf("No need to use any other arguments.\n") ;
 				// Please someone make a help message here.
 				break ;
 
 			default:
-				fprintf(stderr, "Invalid argument\n") ; 
+				fprintf(stderr, "No such argument. Type 'h' argument to see help.\n") ; 
 				// Please someone make a better error message.
 				exit(1) ;
 		}
